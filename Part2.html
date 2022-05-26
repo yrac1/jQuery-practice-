@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+ <h1> <b>Movies Ratings</b></h1>
+ <p1> Eneter movie titles, use the range to rate the movies, If there's a movie you do not want, select the delete button</p1>
+    <ol id="movies">
+      
+    </ol>
+<form>
+<input id= "movie-text" type= "text" placeholder="enter movie title"> 
+<input id= "submit" type="submit" value= "submit">
+</form>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+
+
+        
+      
+        
+        $("#submit").on('click',function(evt){
+            // stop page from refreshing 
+            evt.preventDefault();
+
+            // get the movie text 
+          
+            const movieVal= $("#movie-text").val()
+            
+            // add movie to the list
+           const newMovie= $("<li>").text(movieVal).appendTo($("#movies"))
+            
+            // add code that will automatically add a range and delete button the the new li 
+            $(newMovie).prepend('<input id= "delete" type= "button" value= "Delete"/>') 
+              
+        // adding a range to rate each li 
+            
+            $(newMovie).append('<input type= "range" />')
+
+        })
+
+
+        // $('li #delete').on("click", function (evt){
+        //     // stops the page from refreshing 
+        //     evt.preventDefault; 
+        //     // remove the the movies when the button has been selected
+        //     evt.target.parentElement.remove()
+          
+        // })
+        
+        $('body').on("click","li #delete" ,function (evt){
+            // stops the page from refreshing 
+            evt.preventDefault; 
+            // remove the the movies when the button has been selected
+            evt.target.parentElement.remove()
+          
+        })
+       
+    
+
+
+    </script> 
+    
+</body>
+</html>
